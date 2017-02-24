@@ -12,8 +12,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>
-		<a href="<%=basePath %>test/testConfig">测试</a>
-	</h1>
+	<h1>success</h1>
 </body>
 </html>
