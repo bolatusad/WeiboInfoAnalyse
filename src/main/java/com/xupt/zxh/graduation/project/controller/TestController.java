@@ -1,7 +1,16 @@
 package com.xupt.zxh.graduation.project.controller;
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSON;
+import com.xupt.zxh.graduation.project.bean.TestUser;
+import com.xupt.zxh.graduation.project.service.TestUserService;
 
 /**
  * @Title:TestController
@@ -14,9 +23,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/test")
 public class TestController {
 	
+	Logger logger = Logger.getLogger(TestController.class);
+	
+	@Autowired
+	private TestUserService testUserService;
+	
 	@RequestMapping(value="/testConfig")
-	public String testConfig(){
-		return "success";
+	public ModelAndView testConfig(){
+		ModelAndView mav = new ModelAndView();
+		List<TestUser> testUsers = testUserService.listUser();
+		mav.addObject("users",testUsers);
+		mav.setViewName("success");
+		logger.info("===========>"+JSON.toJSONString(testUsers));
+		return mav;
 	}
 
 }
