@@ -15,10 +15,10 @@ public class TestUserServiceImpl implements TestUserService {
 	@Autowired
 	private TestUserDao testUserDao;
 
-	@Override
+
+
 	public List<TestUser> listUser() {
 		List<TestUser> testUsers = testUserDao.listUser();
 		return testUsers;
 	}
-
 }
