@@ -11,14 +11,14 @@ import com.xupt.zxh.graduation.project.service.TestUserService;
 
 @Service
 public class TestUserServiceImpl implements TestUserService {
-	
-	@Autowired
-	private TestUserDao testUserDao;
+
+    @Autowired
+    private TestUserDao testUserDao;
 
 
-
-	public List<TestUser> listUser() {
-		List<TestUser> testUsers = testUserDao.listUser();
-		return testUsers;
-	}
+    @Override
+    public List<TestUser> listUser() {
+        List<TestUser> testUsers = testUserDao.listUser();
+        return testUsers;
+    }
 }
