@@ -1,10 +1,10 @@
 package com.xupt.zxh.graduation.project.spider.parse;
 
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.zt.gp.spider.bean.WeiboInfo;
 
 /**
  * 用于解析单条微博的信息
@@ -22,15 +22,15 @@ public class ParseWeiboInfo {
 		//获取 微博点赞数
 		Elements attitude = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/attitude/"+tempId);
 		String praiseNum = attitude.get(0).text();
-		weiboInfo.setPraiseNum(ParseWeiboInfo.getNum(praiseNum));
+		weiboInfo.setPraiseNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
 		//获取微博转发数
 		Elements repost = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/repost/"+tempId);
 		String forwardNum = repost.get(0).text();
-		weiboInfo.setForwardNum(ParseWeiboInfo.getNum(forwardNum));
+		weiboInfo.setForwardNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
 		//获取微博评论数
 		Elements comment = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/comment/"+tempId);
 		String commentNum = comment.get(0).text();
-		weiboInfo.setCommentNum(ParseWeiboInfo.getNum(commentNum));
+		weiboInfo.setCommentNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
 		Elements elements = element.children();
 		Element lastDiv = elements.last();
 		Element timeAndWay = lastDiv.getElementsByClass("ct").get(0);

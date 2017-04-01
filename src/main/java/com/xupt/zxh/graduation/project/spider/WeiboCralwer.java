@@ -1,20 +1,17 @@
 package com.xupt.zxh.graduation.project.spider;
 
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
+import com.xupt.zxh.graduation.project.spider.parse.ParseWeiboInfo;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.execchain.MainClientExec;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.zt.gp.spider.bean.WeiboInfo;
-import com.zt.gp.spider.parse.ParseWeiboInfo;
-
-import cn.edu.hfut.dmic.webcollector.crawler.Crawler;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
 import cn.edu.hfut.dmic.webcollector.model.Page;

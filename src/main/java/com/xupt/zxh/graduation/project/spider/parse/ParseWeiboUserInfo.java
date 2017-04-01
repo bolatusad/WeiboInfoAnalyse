@@ -1,9 +1,8 @@
 package com.xupt.zxh.graduation.project.spider.parse;
 
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboUserInfo;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import com.zt.gp.spider.bean.WeiboUserInfo;
 
 /**
  * 用于从html中解析出微博用户的信息
