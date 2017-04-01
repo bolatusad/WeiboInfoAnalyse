@@ -46,17 +46,17 @@ public class WeiboInfo {
 	/**
 	 * 微博的赞数
 	 */
-	private String praiseNum;
+	private Integer praiseNum;
 	
 	/**
 	 * 微博评论数
 	 */
-	private String commentNum;
+	private Integer commentNum;
 	
 	/**
 	 * 微博转发数
 	 */
-	private String forwardNum;
+	private Integer forwardNum;
 	
 	/**
 	 * 是否有图：1 表示有图，2表示没有图
@@ -119,27 +119,27 @@ public class WeiboInfo {
 		this.reasonOfForward = reasonOfForward;
 	}
 
-	public String getPraiseNum() {
+	public Integer getPraiseNum() {
 		return praiseNum;
 	}
 
-	public void setPraiseNum(String praiseNum) {
+	public void setPraiseNum(Integer praiseNum) {
 		this.praiseNum = praiseNum;
 	}
 
-	public String getCommentNum() {
+	public Integer getCommentNum() {
 		return commentNum;
 	}
 
-	public void setCommentNum(String commentNum) {
+	public void setCommentNum(Integer commentNum) {
 		this.commentNum = commentNum;
 	}
 
-	public String getForwardNum() {
+	public Integer getForwardNum() {
 		return forwardNum;
 	}
 
-	public void setForwardNum(String forwardNum) {
+	public void setForwardNum(Integer forwardNum) {
 		this.forwardNum = forwardNum;
 	}
 
