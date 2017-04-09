@@ -15,4 +15,8 @@ public interface TestUserService {
 	
 	List<TestUser> listUser();
 
+	void addTestUser(TestUser testUser);
+
+
+
 }

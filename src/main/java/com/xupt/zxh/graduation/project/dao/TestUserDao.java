@@ -9,4 +9,7 @@ public interface TestUserDao {
 	
 	List<TestUser> listUser();
 
+
+	void addTestUser(TestUser testUser);
+
 }

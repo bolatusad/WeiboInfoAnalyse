@@ -21,4 +21,9 @@ public class TestUserServiceImpl implements TestUserService {
         List<TestUser> testUsers = testUserDao.listUser();
         return testUsers;
     }
+
+    @Override
+    public void addTestUser(TestUser testUser) {
+        testUserDao.addTestUser(testUser);
+    }
 }

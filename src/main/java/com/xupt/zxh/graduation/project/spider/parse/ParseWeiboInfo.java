@@ -1,7 +1,6 @@
 package com.xupt.zxh.graduation.project.spider.parse;
 
 import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 

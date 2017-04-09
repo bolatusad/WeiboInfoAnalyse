@@ -10,4 +10,8 @@
 		from
 			user
 	</select>
+	
+	<insert id="addTestUser" parameterType="com.xupt.zxh.graduation.project.bean.TestUser">
+		INSERT INTO user (username,password) VALUES(#{username},#{password})
+	</insert>
 </mapper>

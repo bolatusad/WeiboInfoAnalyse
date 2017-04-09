@@ -3,12 +3,11 @@ package com.xupt.zxh.graduation.project.spider;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboUserInfo;
+import com.xupt.zxh.graduation.project.spider.parse.ParseWeiboUserInfo;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import com.zt.gp.spider.bean.WeiboUserInfo;
-import com.zt.gp.spider.parse.ParseWeiboUserInfo;
 
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
 import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;

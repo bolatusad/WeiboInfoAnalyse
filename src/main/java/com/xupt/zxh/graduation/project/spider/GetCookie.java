@@ -36,9 +36,11 @@ public class GetCookie {
 
 	public static final String url = "http://login.weibo.cn/login/";
 
-	public static final String username = "15240789374";
+//	public static final String username = "13202683631";
+	public static final String username = "13382247424";
 
 	public static final String password = "a123456";
+//	public static final String password = "jijie0716";
 
 	public GetCookie(){
 		
@@ -80,6 +82,7 @@ public class GetCookie {
         WebElement submit = driver.findElementByCssSelector("input[name=submit]");
         submit.click();
         String result = concatCookie(driver);
+        System.out.println(result);
         driver.close();
         if (result.contains("gsid_CTandWM")) {
             return result;

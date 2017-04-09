@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
@@ -37,5 +39,16 @@ public class TestController {
 		logger.info("===========>"+JSON.toJSONString(testUsers));
 		return mav;
 	}
+
+	@RequestMapping(value="/addUser")
+	public @ResponseBody String addUser(@RequestBody TestUser testUser){
+		try{
+			testUserService.addTestUser(testUser);
+		}catch (Exception e){
+			return "fail";
+		}
+		return "success";
+	}
+
 
 }

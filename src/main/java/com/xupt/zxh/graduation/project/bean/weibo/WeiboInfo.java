@@ -6,8 +6,13 @@ package com.xupt.zxh.graduation.project.bean.weibo;
  *
  */
 public class WeiboInfo {
-	
-	
+
+
+	/**
+	 * 主键
+	 */
+	private Integer id;
+
 	/**
 	 * 单条微博的id
 	 */
@@ -62,6 +67,14 @@ public class WeiboInfo {
 	 * 是否有图：1 表示有图，2表示没有图
 	 */
 	private int hasPicture;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getWeiboId() {
 		return weiboId;

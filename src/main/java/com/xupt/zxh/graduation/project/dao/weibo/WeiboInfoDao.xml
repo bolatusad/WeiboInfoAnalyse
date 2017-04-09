@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xupt.zxh.graduation.project.dao.weibo.WeiboInfoDao">
+
+    <select id="listAllWeiboInfo" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
+		select *
+		from t_weibo_info
+	</select>
+
+    <insert id="insertWeiboInfo" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
+        INSERT INTO t_weibo_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test=" weiboId != null and weiboId != ''">
+                weiboId,
+            </if>
+            <if test="weiboContent != null and weiboContent != ''">
+                weiboContent,
+            </if>
+            <if test="time != null and time != ''">
+                time,
+            </if>
+            <if test="weiboAuthor != null and weiboAuthor != ''">
+                weiboAuthor,
+            </if>
+            <if test="releaseWay != null and releaseWay != ''">
+                releaseWay,
+            </if>
+            <if test="isForward != null">
+                isForward,
+            </if>
+            <if test="reasonOfForward != null and reasonOfForward != ''">
+                reasonOfForward,
+            </if>
+            <if test="praiseNum != null">
+                praiseNum,
+            </if>
+            <if test="commentNum != null">
+                commentNum,
+            </if>
+            <if test="forwardNum != null">
+                forwardNum,
+            </if>
+            <if test="hasPicture != null">
+                hasPicture,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test=" weiboId != null and weiboId != ''">
+                #{weiboId},
+            </if>
+            <if test="weiboContent != null and weiboContent != ''">
+                #{weiboContent},
+            </if>
+            <if test="time != null and time != ''">
+                #{time},
+            </if>
+            <if test="weiboAuthor != null and weiboAuthor != ''">
+                #{weiboAuthor},
+            </if>
+            <if test="releaseWay != null and releaseWay != ''">
+                #{releaseWay},
+            </if>
+            <if test="isForward != null">
+                #{isForward},
+            </if>
+            <if test="reasonOfForward != null and reasonOfForward != ''">
+                #{reasonOfForward},
+            </if>
+            <if test="praiseNum != null">
+                #{praiseNum},
+            </if>
+            <if test="commentNum != null">
+                #{commentNum},
+            </if>
+            <if test="forwardNum != null">
+                #{forwardNum},
+            </if>
+            <if test="hasPicture != null">
+                #{hasPicture},
+            </if>
+        </trim>
+    </insert>
+</mapper>
