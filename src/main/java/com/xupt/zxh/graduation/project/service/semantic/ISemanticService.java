@@ -1,5 +1,6 @@
 package com.xupt.zxh.graduation.project.service.semantic;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -12,5 +13,5 @@ public interface ISemanticService {
      * 获取语义分析
      * @param contents
      */
-    void getSemantic(List<String> contents);
+    void getSemantic(List<String> contents) throws IOException;
 }
