@@ -8,6 +8,16 @@
 		from t_weibo_info
 	</select>
 
+    <select id="listUnalyzedWeiboInfo" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
+		SELECT *
+		FROM t_weibo_info
+		WHERE id NOT IN (
+		  SELECT i.id
+		  FROM t_weibo_info as i,t_weibo_emotion as e
+		  WHERE i.id = e.weibo_id
+		)
+	</select>
+
     <insert id="insertWeiboInfo" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
         INSERT INTO t_weibo_info
         <trim prefix="(" suffix=")" suffixOverrides=",">

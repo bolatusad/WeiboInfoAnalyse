@@ -21,5 +21,11 @@ public interface WeiboInfoDao {
      */
     List<WeiboInfo> listAllWeiboInfo();
 
+    /**
+     * 获取所有的未分析情感的微博
+     * @return
+     */
+    List<WeiboInfo> listUnalyzedWeiboInfo();
+
 
 }

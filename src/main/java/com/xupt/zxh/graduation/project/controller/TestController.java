@@ -1,7 +1,9 @@
 package com.xupt.zxh.graduation.project.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.xupt.zxh.graduation.project.service.semantic.ISemanticService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class TestController {
 	
 	@Autowired
 	private TestUserService testUserService;
+
+	@Autowired
+	private ISemanticService semanticService;
 	
 	@RequestMapping(value="/testConfig")
 	public ModelAndView testConfig(){
@@ -48,6 +53,18 @@ public class TestController {
 			return "fail";
 		}
 		return "success";
+	}
+
+	/**
+	 * 临时测试
+	 */
+	@RequestMapping(value = "/tempTest")
+	public @ResponseBody void tempTest(){
+		try {
+			semanticService.setSemantic();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 

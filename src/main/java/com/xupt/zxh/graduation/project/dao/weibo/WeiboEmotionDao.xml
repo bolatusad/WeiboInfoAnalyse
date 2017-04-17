@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xupt.zxh.graduation.project.dao.weibo.WeiboEmotionDao">
+
+    <insert id="insertWeiboEomtion" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboEmotion">
+        INSERT INTO t_weibo_emotion(weibo_id,positive)
+        VALUES (#{weiboId},#{positive})
+    </insert>
+
+    <insert id="insertWeiboEmotions" parameterType="java.util.List">
+        INSERT INTO t_weibo_emotion(weibo_id,positive)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.weiboId},#{item.positive})
+        </foreach>
+    </insert>
+
+   <select id="queryWeiboEmotionByWeiboId" parameterType="java.lang.Integer">
+       SELECT
+       id,
+       weibo_id weiboId,
+       positive
+       FROM t_weibo_emotion
+       <where>
+           <if test="_parameter != null">
+              AND weibo_id = #{_parameter}
+           </if>
+           OR 1 != 1
+       </where>
+   </select>
+</mapper>

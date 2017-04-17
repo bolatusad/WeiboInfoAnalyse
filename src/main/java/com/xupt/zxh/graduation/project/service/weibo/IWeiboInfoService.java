@@ -20,4 +20,8 @@ public interface IWeiboInfoService {
      * @param weiboInfo
      */
     void insertWeiboInfo(WeiboInfo weiboInfo);
+
+
+    List<WeiboInfo> listUnalyzedWeiboInfo();
+
 }

@@ -28,4 +28,10 @@ public class WeiboInfoServiceImpl implements IWeiboInfoService {
     public void insertWeiboInfo(WeiboInfo weiboInfo) {
         weiboInfoDao.insertWeiboInfo(weiboInfo);
     }
+
+    @Override
+    public List<WeiboInfo> listUnalyzedWeiboInfo() {
+        List<WeiboInfo> weiboInfos = weiboInfoDao.listUnalyzedWeiboInfo();
+        return weiboInfos;
+    }
 }
