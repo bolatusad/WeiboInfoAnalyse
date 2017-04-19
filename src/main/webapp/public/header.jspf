@@ -5,9 +5,19 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<link type="text/css" rel="stylesheet" href="<%=basePath %>jquery-easyui-1.5.1/themes/default/easyui.css" />
-<link type="text/css" rel="stylesheet" href="<%=basePath %>jquery-easyui-1.5.1/themes/icon.css" />
-<link type="text/css" rel="stylesheet" href="<%=basePath %>css/base.css" />
-<script type="text/javascript" src="<%=basePath %>js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/jquery.easyui.min.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+<link  type="text/css" href="<%=basePath%>css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+<link  rel="stylesheet" href="<%=basePath %>css/font-awesome.min.css?v=4.4.0" />
+<link  type="text/css" rel="stylesheet" href="<%=basePath %>css/animate.css" />
+<link type="text/css" rel="stylesheet" href="<%=basePath %>css/style.css?v=4.1.0" />
+<link type="text/css" rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css?v=3.3.6" />
+
+<script type="text/javascript" src="<%=basePath %>js/jquery.min.js?v=2.1.4"></script>
+<script  src="<%=basePath %>js/bootstrap.min.js?v=3.3.6"></script>
+
+<!-- 自定义js -->
+<script type="text/javascript" src="<%=basePath %>js/content.js?v=1.0.0"></script>
+<%--<script type="text/javascript" src="<%=basePath %>js/plugins/metisMenu/jquery.metisMenu.js"></script>--%>
+<%--<script type="text/javascript" src="<%=basePath %>js/plugins/slimscroll/jquery.slimscroll.min.js"></script>--%>
+<%--<script type="text/javascript" src="<%=basePath %>js/plugins/layer/layer.min.js"></script>--%>
 

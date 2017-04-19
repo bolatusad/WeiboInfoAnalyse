@@ -27,7 +27,7 @@ public class User {
 	/**
 	 * 用户类型：1：普通学生；2：管理员
 	 */
-	private int type;
+	private Integer type;
 	
 	/**
 	 * 用户创建时间
@@ -37,7 +37,7 @@ public class User {
 	/**
 	 * 账户是否被激活；0：未激活；1：激活
 	 */
-	private int active;
+	private Integer active;
 
 	public String getEmail() {
 		return email;
@@ -71,11 +71,11 @@ public class User {
 		this.phone = phone;
 	}
 
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 
@@ -87,16 +87,11 @@ public class User {
 		this.createTime = createTime;
 	}
 
-	public int getActive() {
+	public Integer getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(Integer active) {
 		this.active = active;
 	}
-	
-	
-	
-	
-
 }
