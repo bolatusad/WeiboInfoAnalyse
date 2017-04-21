@@ -18,4 +18,10 @@ public interface UserDao {
      * @param user
      */
     void insertUser(User user);
+
+    /**
+     * 修改密码
+     * @param user
+     */
+    void editPassword(User user);
 }

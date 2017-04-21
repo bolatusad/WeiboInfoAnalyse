@@ -34,4 +34,10 @@
 			</if>
 		</trim>
 	</insert>
+
+	<update id="editPassword" parameterType="com.xupt.zxh.graduation.project.bean.account.User">
+		UPDATE t_user
+		SET password = #{password}
+		WHERE id = #{id}
+	</update>
 </mapper>

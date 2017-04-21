@@ -19,4 +19,13 @@ public interface IUserService {
      * @return
      */
     User getUserByEmail(String email);
+
+
+    /**
+     * 修改密码
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    public boolean editPassword(String oldPassword,String newPassword);
 }

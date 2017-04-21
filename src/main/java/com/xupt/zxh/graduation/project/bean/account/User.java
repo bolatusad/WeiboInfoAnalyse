@@ -3,6 +3,11 @@ package com.xupt.zxh.graduation.project.bean.account;
 import java.util.Date;
 
 public class User {
+
+	/**
+	 * 主键
+	 */
+	private Integer id;
 	
 	/**
 	 * 邮箱，当做用户名
@@ -38,6 +43,14 @@ public class User {
 	 * 账户是否被激活；0：未激活；1：激活
 	 */
 	private Integer active;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getEmail() {
 		return email;

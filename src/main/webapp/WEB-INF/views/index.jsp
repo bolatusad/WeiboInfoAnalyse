@@ -14,7 +14,7 @@
 
 
 
-    <title> 客流量监测系统- 主页</title>
+    <title> 微博舆情分析系统- 主页</title>
 
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -48,16 +48,70 @@
                                 </span>
                         </a>
                     </div>
-                    <div class="logo-element">Demo
+                    <div class="logo-element">舆情
                     </div>
                 </li>
+                <!-- 自己的菜单开始-->
+                <li class="line dk"></li>
+                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                    <span class="ng-scope">分类</span>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="<%=basePath%>school/getIndexContent">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-bar-chart-o"></i>
+                        <span class="nav-label">统计分析</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="<%=basePath%>school/toStudentListPage">学生列表</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<%=basePath%>school/toStudentEmotionPage">学生微博情感分析</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="graph_peity.html">Peity</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">基本配置</span><span class="label label-warning pull-right">16</span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="<%=basePath%>school/toSchoolInfoPage">学校基本信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="<%=basePath%>school/toEditPasswordPage">修改密码</a>
+                        </li>
+                        <li><a class="J_menuItem" href="mail_compose.html">写信</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 自己的菜单结束-->
+
 
                 <li class="line dk"></li>
                 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                     <span class="ng-scope">分类</span>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="index_v1.html">
+                    <a class="J_menuItem" href="<%=basePath%>school/toSchoolInfoPage">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">主页</span>
                     </a>
@@ -447,7 +501,7 @@
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" width="100%" height="100%" src="<%=basePath%>index_v1.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            <iframe id="J_iframe" width="100%" height="100%" src="<%=basePath%>school/getIndexContent" frameborder="0" data-id="index_v1.html" seamless></iframe>
         </div>
     </div>
     <!--右侧部分结束-->

@@ -76,4 +76,19 @@ public class AccountController {
     public String toSignupPage(){
         return "account/register";
     }
+
+
+    /**
+     * 修改密码
+     * @param oldPassword
+     * @param newPassword
+     * @return
+     */
+    @RequestMapping(value = "/editPassword",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
+    public @ResponseBody ResponseInfo editPassword(String oldPassword,String newPassword){
+        ResponseInfo responseInfo = new ResponseInfo();
+        Boolean result = userService.editPassword(oldPassword,newPassword);
+        responseInfo.setData(result);
+        return responseInfo;
+    }
 }

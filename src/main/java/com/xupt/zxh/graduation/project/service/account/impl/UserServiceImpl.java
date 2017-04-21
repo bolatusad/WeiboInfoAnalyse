@@ -25,4 +25,17 @@ public class UserServiceImpl implements IUserService {
         User user = userDao.getUserByEmail(email);
         return user;
     }
+
+    @Override
+    public boolean editPassword(String oldPassword, String newPassword) {
+        //临时暂定
+        String email = "563375002@qq.com";
+        User user = userDao.getUserByEmail(email);
+        if(user.getPassword().equals(oldPassword)){
+            user.setPassword(newPassword);
+            userDao.editPassword(user);
+            return true;
+        }
+        return false;
+    }
 }

@@ -1,7 +1,17 @@
 package com.xupt.zxh.graduation.project.bean.account;
 
 public class School {
-	
+
+	/**
+	 * 主键
+	 */
+	private Integer id;
+
+	/**
+	 * 与学校绑定的管理员用户ID
+	 */
+	private Integer userId;
+
 	/**
 	 * 学校编号
 	 */
@@ -31,6 +41,22 @@ public class School {
 	 * 学校总人数
 	 */
 	private int totalStudent;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 	public String getSchoolNumber() {
 		return schoolNumber;
