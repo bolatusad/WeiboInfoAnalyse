@@ -19,17 +19,17 @@ public class ParseWeiboInfo {
 		Elements ctt = element.getElementsByClass("ctt");
 		weiboInfo.setWeiboContent(ctt.get(0).text());
 		//获取 微博点赞数
-		Elements attitude = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/attitude/"+tempId);
+		Elements attitude = element.getElementsByAttributeValueStarting("href", "https://weibo.cn/attitude/"+tempId);
 		String praiseNum = attitude.get(0).text();
 		weiboInfo.setPraiseNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
 		//获取微博转发数
-		Elements repost = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/repost/"+tempId);
+		Elements repost = element.getElementsByAttributeValueStarting("href", "https://weibo.cn/repost/"+tempId);
 		String forwardNum = repost.get(0).text();
-		weiboInfo.setForwardNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
+		weiboInfo.setForwardNum(Integer.parseInt(ParseWeiboInfo.getNum(forwardNum)));
 		//获取微博评论数
-		Elements comment = element.getElementsByAttributeValueStarting("href", "http://weibo.cn/comment/"+tempId);
+		Elements comment = element.getElementsByAttributeValueStarting("href", "https://weibo.cn/comment/"+tempId);
 		String commentNum = comment.get(0).text();
-		weiboInfo.setCommentNum(Integer.parseInt(ParseWeiboInfo.getNum(praiseNum)));
+		weiboInfo.setCommentNum(Integer.parseInt(ParseWeiboInfo.getNum(commentNum)));
 		Elements elements = element.children();
 		Element lastDiv = elements.last();
 		Element timeAndWay = lastDiv.getElementsByClass("ct").get(0);

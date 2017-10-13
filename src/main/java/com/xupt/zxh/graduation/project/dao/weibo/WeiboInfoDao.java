@@ -11,6 +11,13 @@ import java.util.List;
 public interface WeiboInfoDao {
 
     /**
+     * 根据微博ID获取微博
+     * @param id
+     * @return
+     */
+    WeiboInfo getWeiboInfoById(Integer id);
+
+    /**
      * 插入单条微博信息
      * @param weiboInfo
      */

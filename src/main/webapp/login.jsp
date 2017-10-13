@@ -34,6 +34,9 @@
 
         <form class="m-t" role="form" action="index.html">
             <div class="form-group">
+                <span style="color: red;">${message_login}</span>
+            </div>
+            <div class="form-group">
                 <input id="email" type="email" class="form-control" placeholder="请输入邮箱" name="email" required="" aria-required="true">
             </div>
             <div class="form-group">

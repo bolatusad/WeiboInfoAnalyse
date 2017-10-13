@@ -44,6 +44,11 @@ public class User {
 	 */
 	private Integer active;
 
+	/**
+	 * 学校
+	 */
+	private Integer school;
+
 	public Integer getId() {
 		return id;
 	}
@@ -106,5 +111,13 @@ public class User {
 
 	public void setActive(Integer active) {
 		this.active = active;
+	}
+
+	public Integer getSchool() {
+		return school;
+	}
+
+	public void setSchool(Integer school) {
+		this.school = school;
 	}
 }

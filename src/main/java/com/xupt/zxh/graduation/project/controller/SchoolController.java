@@ -3,13 +3,19 @@ package com.xupt.zxh.graduation.project.controller;
 import com.xupt.zxh.graduation.project.bean.account.School;
 import com.xupt.zxh.graduation.project.bean.account.User;
 import com.xupt.zxh.graduation.project.bean.weibo.EmotionVO;
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
+import com.xupt.zxh.graduation.project.bean.weibo.WeiboSensitive;
 import com.xupt.zxh.graduation.project.service.account.ISchoolService;
+import com.xupt.zxh.graduation.project.service.account.IUserService;
+import com.xupt.zxh.graduation.project.service.weibo.ISensitiveService;
+import com.xupt.zxh.graduation.project.service.weibo.IWeiboInfoService;
 import com.xupt.zxh.graduation.project.util.PageUtil;
 import com.xupt.zxh.graduation.project.util.ResponseInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,6 +28,18 @@ public class SchoolController {
 
     @Autowired
     private ISchoolService schoolService;
+
+    @Autowired
+    private IWeiboInfoService weiboInfoService;
+
+    @Autowired
+    private ISensitiveService sensitiveService;
+
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private HttpServletRequest request;
 
     /**
      * 跳转至学校基本信息界面
@@ -38,9 +56,7 @@ public class SchoolController {
     @RequestMapping(value = "/getSchoolInfo")
     public @ResponseBody ResponseInfo getSchoolInfo(){
         ResponseInfo responseInfo = new ResponseInfo();
-        //暂时先模拟为1
-        Integer id = 1;
-        School school = schoolService.getSchoolByUserId(id);
+        School school = schoolService.getCurrentSchool();
         responseInfo.setData(school);
         return responseInfo;
     }
@@ -76,8 +92,6 @@ public class SchoolController {
     public @ResponseBody ResponseInfo getStudent(){
         PageUtil pageUtil = new PageUtil();
         ResponseInfo responseInfo = new ResponseInfo();
-        //暂定为1
-        pageUtil.setUserId(1);
         List<User> users = schoolService.getUserByPage(pageUtil);
         responseInfo.setData(users);
         return responseInfo;
@@ -114,9 +128,104 @@ public class SchoolController {
         return responseInfo;
     }
 
+    /**
+     * 通过用户邮箱获取微博情感分析
+     * @param email
+     * @return
+     */
+    @RequestMapping(value = "/getStudentEmotionByEmail",method = RequestMethod.GET,produces = { "application/json;charset=UTF-8" })
+    public @ResponseBody ResponseInfo getStudentEmotionByEmail(String email){
+        ResponseInfo responseInfo = new ResponseInfo();
+        User user = userService.getUserByEmail(email);
+        List<EmotionVO> emotionVOS = null;
+        if(user != null){
+            emotionVOS = schoolService.getEmotionVOByUserId(user.getId());
+        }else {
+            responseInfo.setCode(ResponseInfo.FAIL);
+        }
+        responseInfo.setData(emotionVOS);
+        return responseInfo;
+    }
+
+    /**
+     * 跳转至修改密码界面
+     * @return
+     */
     @RequestMapping(value = "/toEditPasswordPage",method = RequestMethod.GET)
     public String toEditPasswordPage(){
         return "account/editPassword";
+    }
+
+
+    /**
+     * 获取所有的敏感词分析结果
+     * @return
+     */
+    @RequestMapping(value = "/getAllSensittive",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
+    public @ResponseBody ResponseInfo getAllSensitive(){
+        ResponseInfo responseInfo = new ResponseInfo();
+        List<WeiboSensitive> weiboSensitives = sensitiveService.listAllSensitiveResult();
+        responseInfo.setData(weiboSensitives);
+        return  responseInfo;
+    }
+
+
+    /**
+     * 跳转至指定页面
+     * @param page
+     * @return
+     */
+    @RequestMapping(value = "/toPage",method = RequestMethod.GET)
+    public String toPage(String page){
+        return page;
+    }
+
+    /**
+     * 通过微博ID获取微博信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/getWeiboInfoById",method = RequestMethod.GET,produces = {"application/json;chartset=UTF-8"})
+    public @ResponseBody ResponseInfo getWeiboInfoById(Integer id){
+        ResponseInfo responseInfo = new ResponseInfo();
+        WeiboInfo weiboInfo = weiboInfoService.getWeiboInfoById(id);
+        responseInfo.setData(weiboInfo);
+        return responseInfo;
+    }
+
+    /**
+     * 通过学校ID获取学校信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/getSchoolById/{id}")
+    public @ResponseBody ResponseInfo getSchoolById(@PathVariable Integer id){
+        ResponseInfo responseInfo = new ResponseInfo();
+        School school = schoolService.getSchoolById(id);
+        responseInfo.setData(school);
+        return responseInfo;
+    }
+
+    /**
+     * 申请成为学校账户
+     * @param school
+     * @return
+     */
+    @RequestMapping(value = "/applySchoolAccount",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
+    public @ResponseBody ResponseInfo applySchoolAccount(@RequestBody School school){
+        ResponseInfo responseInfo = new ResponseInfo();
+        schoolService.applySchoolAccount(school,request);
+        responseInfo.setDesc("已提交");
+        return responseInfo;
+    }
+
+    /**
+     * 审核通过
+     */
+    @RequestMapping(value = "/approve",method = RequestMethod.POST)
+    public @ResponseBody String approve(School school){
+        schoolService.insertSchool(school);
+        return "审核通过："+school.getSchoolName();
     }
 
 }

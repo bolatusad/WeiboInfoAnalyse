@@ -1,30 +1,27 @@
 package com.xupt.zxh.graduation.project.spider;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.util.Set;
-
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import cn.edu.hfut.dmic.webcollector.net.HttpRequest;
+import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlInput;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.junit.Test;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import cn.edu.hfut.dmic.webcollector.net.HttpRequest;
-import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.Set;
 
 /**
  * 获取微博的cookie
@@ -34,7 +31,8 @@ import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
  */
 public class GetCookie {
 
-	public static final String url = "http://login.weibo.cn/login/";
+    // 原来的爬虫： http://login.weibo.cn/login/
+	public static final String url = "https://passport.weibo.cn/signin/login";
 
 //	public static final String username = "13202683631";
 	public static final String username = "13382247424";
@@ -106,9 +104,78 @@ public class GetCookie {
 		return result;
 	}
 
+    public static String concatCookie2(Set<com.gargoylesoftware.htmlunit.util.Cookie> cookieSet) {
+        StringBuilder sb = new StringBuilder();
+        for (com.gargoylesoftware.htmlunit.util.Cookie cookie : cookieSet) {
+            sb.append(cookie.getName() + "=" + cookie.getValue() + ";");
+        }
+        String result = sb.toString();
+        return result;
+    }
+
+
+    /**
+     * 再次获取cookie
+     */
+	public static void getCookieAgain() throws IOException {
+
+//        StringBuilder stringBuilder = new StringBuilder();
+//        HtmlUnitDriver driver = new HtmlUnitDriver();
+//        driver.setJavascriptEnabled(true);
+//        driver.get("http://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.3.16)");
+//        String cookies = concatCookie(driver);
+//
+//        System.out.println(driver.findElementByTagName("title").getText());
+//        WebElement mobile = driver.findElementById("username");
+//        WebElement pass = driver.findElementById("password");
+//        WebElement remeber = driver.findElementById("remLoginName");
+//        mobile.sendKeys(username);
+//        pass.sendKeys(password);
+//        remeber.click();
+//        WebElement login = driver.findElementByXPath("//input[@type='submit'][1]");
+//        login.click();
+//        String result = concatCookie(driver);
+//        System.out.println("=============================================>");
+//        Set<Cookie> cookie = driver.manage().getCookies();
+//        System.out.println();
+//        System.out.println(result);
+
+        WebClient client = new WebClient(BrowserVersion.FIREFOX_24);
+        client.getOptions().setJavaScriptEnabled(true);    //默认执行js，如果不执行js，则可能会登录失败，因为用户名密码框需要js来绘制。
+        client.getOptions().setCssEnabled(false);
+        client.setAjaxController(new NicelyResynchronizingAjaxController());
+        client.getOptions().setThrowExceptionOnScriptError(false);
+
+        HtmlPage page = client.getPage("http://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.3.16)");
+        //System.out.println(page.asText());
+
+        //登录
+
+        HtmlInput ln = page.getHtmlElementById("username");
+        HtmlInput pwd = page.getHtmlElementById("password");
+        HtmlInput btn = page.getFirstByXPath("//input[@type='submit'][1]");
+
+
+        ln.setAttribute("value",username);
+        pwd.setAttribute("value", password);
+
+        HtmlPage page2 = btn.click();
+        HtmlPage page3 =  client.getPage("https://weibo.cn/");
+        System.out.println("==========================>");
+        System.out.println(page3.asXml());
+        System.out.println("<==========================");
+//        登录完成，现在可以爬取任意你想要的页面了。
+        Set<com.gargoylesoftware.htmlunit.util.Cookie> cookie = client.getCookieManager().getCookies();
+        String cookiesss = concatCookie2(cookie);
+        System.out.println(cookiesss);
+
+    }
+
 	@Test
 	public void test() throws Exception {
-		getCookie(username, password);
+//		getCookie(username, password);
+
+        getCookieAgain();
 	}
 	
 	/**

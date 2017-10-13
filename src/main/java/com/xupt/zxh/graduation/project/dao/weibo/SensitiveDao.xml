@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xupt.zxh.graduation.project.dao.weibo.SensitiveDao">
+
+    <select id="listAllSensitive" resultType="com.xupt.zxh.graduation.project.bean.weibo.Sensitive">
+		select *
+		from t_sensitive
+	</select>
+
+	<select id="listAllSensitiveResult" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboSensitive">
+		SELECT *
+		FROM t_weibo_sensitive
+	</select>
+
+	<insert id="insertResult">
+		INSERT INTO t_weibo_sensitive(weiboId,type)
+		VALUES (#{weiboId},#{type})
+	</insert>
+
+    <!--<select id="listUnalyzedWeiboInfo" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">-->
+		<!--SELECT *-->
+		<!--FROM t_weibo_info-->
+		<!--WHERE id NOT IN (-->
+		  <!--SELECT i.id-->
+		  <!--FROM t_weibo_info as i,t_weibo_emotion as e-->
+		  <!--WHERE i.id = e.weibo_id-->
+		<!--)-->
+	<!--</select>-->
+
+    <!--<insert id="insertWeiboInfo" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">-->
+        <!--INSERT INTO t_weibo_info-->
+        <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+            <!--<if test=" userId != null">-->
+                <!--userId,-->
+            <!--</if>-->
+            <!--<if test=" weiboId != null and weiboId != ''">-->
+                <!--weiboId,-->
+            <!--</if>-->
+            <!--<if test="weiboContent != null and weiboContent != ''">-->
+                <!--weiboContent,-->
+            <!--</if>-->
+            <!--<if test="time != null and time != ''">-->
+                <!--time,-->
+            <!--</if>-->
+            <!--<if test="weiboAuthor != null and weiboAuthor != ''">-->
+                <!--weiboAuthor,-->
+            <!--</if>-->
+            <!--<if test="releaseWay != null and releaseWay != ''">-->
+                <!--releaseWay,-->
+            <!--</if>-->
+            <!--<if test="isForward != null">-->
+                <!--isForward,-->
+            <!--</if>-->
+            <!--<if test="reasonOfForward != null and reasonOfForward != ''">-->
+                <!--reasonOfForward,-->
+            <!--</if>-->
+            <!--<if test="praiseNum != null">-->
+                <!--praiseNum,-->
+            <!--</if>-->
+            <!--<if test="commentNum != null">-->
+                <!--commentNum,-->
+            <!--</if>-->
+            <!--<if test="forwardNum != null">-->
+                <!--forwardNum,-->
+            <!--</if>-->
+            <!--<if test="hasPicture != null">-->
+                <!--hasPicture,-->
+            <!--</if>-->
+        <!--</trim>-->
+        <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+            <!--<if test=" userId != null">-->
+                <!--#{userId},-->
+            <!--</if>-->
+            <!--<if test=" weiboId != null and weiboId != ''">-->
+                <!--#{weiboId},-->
+            <!--</if>-->
+            <!--<if test="weiboContent != null and weiboContent != ''">-->
+                <!--#{weiboContent},-->
+            <!--</if>-->
+            <!--<if test="time != null and time != ''">-->
+                <!--#{time},-->
+            <!--</if>-->
+            <!--<if test="weiboAuthor != null and weiboAuthor != ''">-->
+                <!--#{weiboAuthor},-->
+            <!--</if>-->
+            <!--<if test="releaseWay != null and releaseWay != ''">-->
+                <!--#{releaseWay},-->
+            <!--</if>-->
+            <!--<if test="isForward != null">-->
+                <!--#{isForward},-->
+            <!--</if>-->
+            <!--<if test="reasonOfForward != null and reasonOfForward != ''">-->
+                <!--#{reasonOfForward},-->
+            <!--</if>-->
+            <!--<if test="praiseNum != null">-->
+                <!--#{praiseNum},-->
+            <!--</if>-->
+            <!--<if test="commentNum != null">-->
+                <!--#{commentNum},-->
+            <!--</if>-->
+            <!--<if test="forwardNum != null">-->
+                <!--#{forwardNum},-->
+            <!--</if>-->
+            <!--<if test="hasPicture != null">-->
+                <!--#{hasPicture},-->
+            <!--</if>-->
+        <!--</trim>-->
+    <!--</insert>-->
+</mapper>

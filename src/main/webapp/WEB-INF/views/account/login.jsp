@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -16,9 +16,11 @@
     <meta name="description" content="">
 
     <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
+    <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
-    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+    <script>if (window.top !== window.self) {
+        window.top.location = window.location;
+    }</script>
 </head>
 
 <body class="gray-bg">
@@ -33,17 +35,28 @@
         <h3>欢迎使用 微博舆情分析系统</h3>
 
         <form class="m-t" role="form" action="<%=basePath%>account/login" method="post">
-        <div class="form-group">
-            <input id="email" type="email" class="form-control" placeholder="请输入邮箱" name="email" required="" aria-required="true">
-        </div>
-        <div class="form-group">
-            <input id="password" name="password" minlength="2" type="password" placeholder="请输入密码" class="form-control" required="" aria-required="true">
-        </div>
-        <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+            <div class="form-group">
+                <span style="color: red;">${message_login}</span>
+            </div>
+            <div class="form-group">
+                <input id="email" type="email" class="form-control" placeholder="请输入邮箱" name="email" required=""
+                       aria-required="true">
+            </div>
+            <div class="form-group">
+                <input id="password" name="password" minlength="2" type="password" placeholder="请输入密码"
+                       class="form-control" required="" aria-required="true">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
 
-        <p class="text-muted text-center"> <a href="login.html#"><small>忘记密码了？</small></a> | <a href="<%=basePath%>account/toSignupPage">注册一个新账号</a>
-        </p>
+            <p class="text-muted text-center">
+                <a href="<%=basePath%>account/toForgetPasswordPage">
+                    <small>忘记密码了？</small>
+                </a> |
+                <a href="<%=basePath%>account/toSignupPage">
+                    <small>注册一个新账号</small>
+                </a>
+            </p>
 
         </form>
     </div>
@@ -52,8 +65,6 @@
 <%--<!-- 全局js -->--%>
 <%--<script src="<%=basePath%>js/jquery.min.js?v=2.1.4"></script>--%>
 <%--<script src="<%=basePath%>js/bootstrap.min.js?v=3.3.6"></script>--%>
-
-
 
 
 </body>

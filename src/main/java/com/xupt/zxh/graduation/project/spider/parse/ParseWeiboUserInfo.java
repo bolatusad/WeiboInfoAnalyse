@@ -91,7 +91,7 @@ public class ParseWeiboUserInfo {
 			// 暂时只是西安邮电大学
 			if (studyInfos[i].indexOf("西安邮电") != -1) {
 				String[] temps = studyInfos[i].split("&nbsp;");
-				userInfo.setSchool(temps[0].substring(1));
+//				userInfo.setSchool(temps[0].substring(1));
 				if (temps.length >= 2) {
 					userInfo.setSchoolTime(temps[1].trim().substring(0,
 							temps[1].length() - 1));
@@ -130,7 +130,7 @@ public class ParseWeiboUserInfo {
 			if(otherInfos[i].indexOf("手机版") != -1){
 				String homePage = otherInfos[i].substring(otherInfos[i].indexOf(':')+1);
 				userInfo.setHomepage(homePage);
-				userInfo.setUserId(homePage.substring(16));
+//				userInfo.setUserId(homePage.substring(16));
 			}
 		}
 		return userInfo;

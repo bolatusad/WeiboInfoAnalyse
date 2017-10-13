@@ -3,6 +3,18 @@
 
 <mapper namespace="com.xupt.zxh.graduation.project.dao.weibo.WeiboInfoDao">
 
+
+    <select id="getWeiboInfoById" parameterType="java.lang.Integer" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
+        SELECT *
+        FROM t_weibo_info
+        <where>
+            <if test="_parameter != null">
+                AND id = #{_parameter}
+            </if>
+            OR 1 != 1
+        </where>
+    </select>
+
     <select id="listAllWeiboInfo" resultType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
 		select *
 		from t_weibo_info
@@ -18,9 +30,12 @@
 		)
 	</select>
 
-    <insert id="insertWeiboInfo" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo">
+    <insert id="insertWeiboInfo" parameterType="com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_weibo_info
         <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test=" userId != null">
+                userId,
+            </if>
             <if test=" weiboId != null and weiboId != ''">
                 weiboId,
             </if>
@@ -56,6 +71,9 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test=" userId != null">
+                #{userId},
+            </if>
             <if test=" weiboId != null and weiboId != ''">
                 #{weiboId},
             </if>

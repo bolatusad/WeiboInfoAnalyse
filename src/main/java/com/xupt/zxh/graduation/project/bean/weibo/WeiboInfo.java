@@ -14,6 +14,11 @@ public class WeiboInfo {
 	private Integer id;
 
 	/**
+	 * 用户ID
+	 */
+	private Integer userId;
+
+	/**
 	 * 单条微博的id
 	 */
 	private String weiboId;
@@ -164,18 +169,31 @@ public class WeiboInfo {
 		this.hasPicture = hasPicture;
 	}
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+
 	@Override
 	public String toString() {
-		return "WeiboInfo [weiboId=" + weiboId + ", weiboContent="
-				+ weiboContent + ", time=" + time + ", weiboAuthor="
-				+ weiboAuthor + ", releaseWay=" + releaseWay + ", isForward="
-				+ isForward + ", reasonOfForward=" + reasonOfForward
-				+ ", praiseNum=" + praiseNum + ", commentNum=" + commentNum
-				+ ", forwardNum=" + forwardNum + ", hasPicture=" + hasPicture
-				+ "]";
+		return "WeiboInfo{" +
+				"id=" + id +
+				", userId=" + userId +
+				", weiboId='" + weiboId + '\'' +
+				", weiboContent='" + weiboContent + '\'' +
+				", time='" + time + '\'' +
+				", weiboAuthor='" + weiboAuthor + '\'' +
+				", releaseWay='" + releaseWay + '\'' +
+				", isForward=" + isForward +
+				", reasonOfForward='" + reasonOfForward + '\'' +
+				", praiseNum=" + praiseNum +
+				", commentNum=" + commentNum +
+				", forwardNum=" + forwardNum +
+				", hasPicture=" + hasPicture +
+				'}';
 	}
-	
-	
-	
-
 }

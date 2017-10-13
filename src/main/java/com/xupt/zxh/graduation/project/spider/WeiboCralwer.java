@@ -1,27 +1,21 @@
 package com.xupt.zxh.graduation.project.spider;
 
+import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
+import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
+import cn.edu.hfut.dmic.webcollector.model.Page;
+import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
+import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
 import com.xupt.zxh.graduation.project.spider.parse.ParseWeiboInfo;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
-import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
-import cn.edu.hfut.dmic.webcollector.model.Page;
-import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
-import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 用于爬去某个用户的全部微博信息

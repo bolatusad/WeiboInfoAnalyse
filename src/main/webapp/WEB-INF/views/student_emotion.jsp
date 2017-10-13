@@ -22,21 +22,14 @@
                 <div class="ibox-title">
                     <h5>情感分析</h5>
                     <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="graph_flot.html#">选项1</a>
-                            </li>
-                            <li><a href="graph_flot.html#">选项2</a>
-                            </li>
-                        </ul>
-                        <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
+                            <div class="form-group">
+                                <div class="col-sm-3">
+                                   <input type="text" id="email" name="email" style="border-left: none;border-top: none;border-right: none;border-bottom: #31b0d5 2px solid;" placeholder="请输入邮箱"/>
+                                </div>
+                                <div class="col-sm-4 pull-right">
+                                   <input type="button" class="btn btn-xs btn-info" id="submit" name="submit" value="查询"/>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -67,7 +60,9 @@
 
 
 <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
+
+
+   // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('echarts-my'));
 
     var option = {
@@ -118,7 +113,45 @@
     $(function () {
 
         getEmotionInfo();
+
+        //绑定搜索事件
+        $("#submit").on("click",function () {
+            getEmotionInfoByEmail();
+        });
     });
+
+   /**
+    * 搜索获取情感分析
+    */
+   function getEmotionInfoByEmail() {
+       var email = $("#email").val();
+       if(email == null || email == ''){
+           toastr.warning('邮箱不能为空', '提示');
+           return;
+       }
+           $.ajax({
+               //暂定为1
+               url:"/school/getStudentEmotionByEmail",
+               type:"get",
+               data:{
+                   email:email
+               },
+               dataType:"json",
+               success : function (data) {
+                   if(data.code == "001"){
+                       if(data.data.length >0 && data.data != null && data.data != ''){
+                           console.log(data.data);
+                           option.series[0].data = data.data;
+                           option.title.subtext = data.data[0].email;
+                           myChart.setOption(option);
+                       }else{
+                           toastr.warning('未查询到相应的情感分析！', '提示');
+                       }
+                   }
+
+               }
+           });
+   }
 
 
     function getEmotionInfo() {
@@ -132,13 +165,16 @@
                 dataType:"json",
                 success : function (data) {
                     if(data.code == "001"){
-                        if(data.data.length >0 && data.data != null && data.data != ''){
+                        if(data.data != null && data.data != '' && data.data.length >0 ){
+                            console.log(data.data);
                             option.series[0].data = data.data;
                             option.title.subtext = data.data[0].email;
                             myChart.setOption(option);
                         }else{
                             toastr.warning('该学生没有绑定微博或未发布微博！', '提示');
                         }
+                    }else{
+                        toastr.warning('该学生没有绑定微博或未发布微博！', '提示');
                     }
 
                 }

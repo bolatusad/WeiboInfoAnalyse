@@ -7,11 +7,9 @@ import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
 import com.xupt.zxh.graduation.project.service.semantic.ISemanticService;
 import com.xupt.zxh.graduation.project.service.weibo.IWeiboInfoService;
 import com.xupt.zxh.graduation.project.service.weibo.impl.IWeiboEmotionService;
-import com.xupt.zxh.graduation.project.util.HttpUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -53,8 +51,8 @@ public class SemanticServiceImpl implements ISemanticService {
             return weiboEmotions;
         }
         String jsonContent = JSON.toJSONString(contents);
-//        String result = postForResult(url,jsonContent,token);
-        String result = "[[0.1724452534211558, 0.8275547465788442], [0.4787865331070966, 0.5212134668929034], [0.9955046099661772, 0.004495390033822771], [0.8093759124900808, 0.19062408750991924], [0.39585670810082285, 0.6041432918991771]]";
+        String result = postForResult(url,jsonContent,token);
+//        String result = "[[0.1724452534211558, 0.8275547465788442], [0.4787865331070966, 0.5212134668929034], [0.9955046099661772, 0.004495390033822771], [0.8093759124900808, 0.19062408750991924], [0.39585670810082285, 0.6041432918991771]]";
         System.out.println(result);
         JSONArray jsonResult = JSON.parseArray(result);
         for (Object object : jsonResult){

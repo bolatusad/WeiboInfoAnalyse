@@ -6,21 +6,21 @@ package com.xupt.zxh.graduation.project.bean.weibo;
  *
  */
 public class WeiboUserInfo {
+
+	/**
+	 * 主键
+	 */
+	private Integer id;
 	
 	/**
-	 * 用户邮箱，即用户名，与user表相关联
+	 * 用户ID，与用户表关联
 	 */
-	private String email;
-	
-	/**
-	 * 用户自己填写
-	 */
-	private String school;
+	private Integer userId;
 	
 	/**
 	 * 微博的用户ID
 	 */
-	private String userId;
+	private String weiboId;
 	
 	/**
 	 * 用户昵称
@@ -96,14 +96,6 @@ public class WeiboUserInfo {
 	 * 用户主页,暂时保存手机界面
 	 */
 	private String homepage;
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public String getNickname() {
 		return nickname;
@@ -193,14 +185,6 @@ public class WeiboUserInfo {
 		this.tags = tags;
 	}
 
-	public String getSchool() {
-		return school;
-	}
-
-	public void setSchool(String school) {
-		this.school = school;
-	}
-
 	public String getSchoolTime() {
 		return schoolTime;
 	}
@@ -232,31 +216,28 @@ public class WeiboUserInfo {
 	public void setAuthenticationInfo(String authenticationInfo) {
 		this.authenticationInfo = authenticationInfo;
 	}
-	
 
-	public String getEmail() {
-		return email;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "WeiboUserInfo [email=" + email + ", userId=" + userId
-				+ ", nickname=" + nickname + ", authentication="
-				+ authentication + ", intelligent=" + intelligent + ", gender="
-				+ gender + ", province=" + province + ", city=" + city
-				+ ", birthday=" + birthday + ", seaxualOrientation="
-				+ seaxualOrientation + ", emotional=" + emotional
-				+ ", authenticationInfo=" + authenticationInfo + ", brief="
-				+ brief + ", tags=" + tags + ", school=" + school
-				+ ", schoolTime=" + schoolTime + ", works=" + works
-				+ ", homepage=" + homepage + "]";
+	public Integer getUserId() {
+		return userId;
 	}
 
-	
-	
-	
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public String getWeiboId() {
+		return weiboId;
+	}
+
+	public void setWeiboId(String weiboId) {
+		this.weiboId = weiboId;
+	}
 }

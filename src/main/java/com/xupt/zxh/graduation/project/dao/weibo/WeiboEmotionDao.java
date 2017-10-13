@@ -1,7 +1,6 @@
 package com.xupt.zxh.graduation.project.dao.weibo;
 
 import com.xupt.zxh.graduation.project.bean.weibo.WeiboEmotion;
-import com.xupt.zxh.graduation.project.bean.weibo.WeiboInfo;
 
 import java.util.List;
 

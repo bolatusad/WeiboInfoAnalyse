@@ -24,4 +24,25 @@ public interface UserDao {
      * @param user
      */
     void editPassword(User user);
+
+    /**
+     * 通过用户ID获取用户信息
+     * @param id
+     * @return
+     */
+    User getUserById(Integer id);
+
+    /**
+     * 修改用户信息
+     * @param user
+     */
+    void editUserInfo(User user);
+
+
+    /**
+     * 重置密码，通过邮箱
+     * @param user
+     */
+    void resetPasswordByEmail(User user);
+
 }

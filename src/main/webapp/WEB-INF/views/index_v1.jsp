@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-xs-6">
                             <div class="panel padder-v item bg-primary">
-                                <div class="h1 text-fff font-thin h1">20</div>
+                                <div class="h1 text-fff font-thin h1">2</div>
                                 <span class="text-muted text-xs">注册量</span>
                                 <div class="top text-right w-full">
                                     <i class="fa fa-caret-down text-warning m-r-sm"></i>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-xs-6">
                             <div class="panel padder-v item">
-                                <div class="font-thin h1">500</div>
+                                <div class="font-thin h1">43</div>
                                 <span class="text-muted text-xs">微博总数</span>
                                 <div class="bottom text-left">
                                     <i class="fa fa-caret-up text-warning m-l-sm"></i>

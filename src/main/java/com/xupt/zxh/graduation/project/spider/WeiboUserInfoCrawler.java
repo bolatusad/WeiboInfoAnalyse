@@ -1,19 +1,18 @@
 package com.xupt.zxh.graduation.project.spider;
 
-import java.net.URLEncoder;
-import java.util.HashMap;
-
+import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
+import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
+import cn.edu.hfut.dmic.webcollector.model.Page;
+import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
+import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
 import com.xupt.zxh.graduation.project.bean.weibo.WeiboUserInfo;
 import com.xupt.zxh.graduation.project.spider.parse.ParseWeiboUserInfo;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import cn.edu.hfut.dmic.webcollector.model.CrawlDatum;
-import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
-import cn.edu.hfut.dmic.webcollector.model.Page;
-import cn.edu.hfut.dmic.webcollector.net.HttpResponse;
-import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;
+import java.net.URLEncoder;
+import java.util.HashMap;
 
 /**
  * 用于爬取指定用户类型的用户信息

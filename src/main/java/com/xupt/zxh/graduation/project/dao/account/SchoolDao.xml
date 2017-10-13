@@ -3,6 +3,16 @@
  
 <mapper namespace="com.xupt.zxh.graduation.project.dao.account.SchoolDao">
 
+	<select id="getSchoolById" parameterType="java.lang.Integer" resultType="com.xupt.zxh.graduation.project.bean.account.School">
+		SELECT *
+		FROM t_school
+		<where>
+			<if test="_parameter != null">
+				AND id = #{_parameter}
+			</if>
+			OR 1 != 1
+		</where>
+	</select>
 
 	<select id="getScgoolByUserId" parameterType="java.lang.String" resultType="com.xupt.zxh.graduation.project.bean.account.School">
 		SELECT *
@@ -23,6 +33,7 @@
 			FROM t_school
 			WHERE userId = #{userId}
 		)
+		AND id != #{userId}
 	</select>
 
 	<select id="getEmotionDTOByUserId" parameterType="java.lang.Integer" resultType="com.xupt.zxh.graduation.project.bean.weibo.EmotionDTO">
@@ -52,23 +63,29 @@
 		</where>
 	</update>
 
-	<!--<insert id="insertUser" parameterType="com.xupt.zxh.graduation.project.bean.account.User">-->
-		<!--INSERT INTO t_user-->
-		<!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
-			<!--<if test=" email != null and email != ''">-->
-				<!--email,-->
-			<!--</if>-->
-			<!--<if test="password != null and password != ''">-->
-				<!--password,-->
-			<!--</if>-->
-		<!--</trim>-->
-		<!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
-			<!--<if test=" email != null and email != ''">-->
-				<!--#{email},-->
-			<!--</if>-->
-			<!--<if test="password != null and password != ''">-->
-				<!--#{password},-->
-			<!--</if>-->
-		<!--</trim>-->
-	<!--</insert>-->
+	<insert id="insertSchool" parameterType="com.xupt.zxh.graduation.project.bean.account.School">
+		INSERT INTO t_school
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				userId,
+			</if>
+			<if test="schoolNumber != null and schoolNumber != ''">
+				schoolNumber,
+			</if>
+			<if test="schoolName != null and schoolName != ''">
+				schoolName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId},
+			</if>
+			<if test="schoolNumber != null and schoolNumber != ''">
+				#{schoolNumber},
+			</if>
+			<if test="schoolName != null and schoolName != ''">
+				#{schoolName},
+			</if>
+		</trim>
+	</insert>
 </mapper>

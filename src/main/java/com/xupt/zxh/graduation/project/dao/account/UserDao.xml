@@ -15,6 +15,17 @@
 		</where>
 	</select>
 
+	<select id="getUserById" parameterType="java.lang.Integer" resultType="com.xupt.zxh.graduation.project.bean.account.User">
+		SELECT *
+		FROM t_user
+		<where>
+			<if test="_parameter != null">
+				AND id = #{_patameter}
+			</if>
+			OR 1 != 1
+		</where>
+	</select>
+
 	<insert id="insertUser" parameterType="com.xupt.zxh.graduation.project.bean.account.User">
 		INSERT INTO t_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -39,5 +50,24 @@
 		UPDATE t_user
 		SET password = #{password}
 		WHERE id = #{id}
+	</update>
+
+	<update id="resetPasswordByEmail" parameterType="com.xupt.zxh.graduation.project.bean.account.User">
+		UPDATE t_user
+		SET password = #{password}
+		WHERE email = #{email}
+	</update>
+
+	<update id="editUserInfo" parameterType="com.xupt.zxh.graduation.project.bean.account.User">
+		UPDATE t_user
+		SET nickname = #{nickname},
+		    phone = #{phone},
+		    school = #{school}
+		<where>
+			<if test="id != null">
+				AND id = #{id}
+			</if>
+			OR 1 != 1
+		</where>
 	</update>
 </mapper>

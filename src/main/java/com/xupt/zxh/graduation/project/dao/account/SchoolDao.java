@@ -39,4 +39,17 @@ public interface SchoolDao {
      */
     List<EmotionDTO> getEmotionDTOByUserId(Integer id);
 
+    /**
+     * 通过学校ID获取学校信息
+     * @param id
+     * @return
+     */
+    School getSchoolById(Integer id);
+
+    /**
+     * 插入学校信息
+     * @param school
+     */
+    void insertSchool(School school);
+
 }
